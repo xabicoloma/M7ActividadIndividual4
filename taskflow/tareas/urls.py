@@ -12,4 +12,5 @@ urlpatterns = [
     path('modificar_posteo/<pk>/', PostUpdateView.as_view(), name='modificar_posteo'),
     path('eliminar_posteo/<pk>/', PostDeleteView.as_view(), name='eliminar_posteo'),
     path('cambiar_status/<id>/', views.cambiar_status, name='cambiar_status'),
+    path('new_status/<id>/', views.new_status, name='new_status'),
 ]

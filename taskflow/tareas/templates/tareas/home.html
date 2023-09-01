@@ -25,7 +25,7 @@
                     </nav>
         <!-- ============= COMPONENT END// ============== -->	
                 </aside>
-                <main class="col-lg-9">
+                <main class="col-lg-9 ">
                     <form action="" method="GET">
                         <div class="filtro-colapsable">
                             <div class="contenido-colapsable">
@@ -69,19 +69,29 @@
                                             <div class="modal-body">
                                                 <h2>{{ post.title }}</h2>
                                                 <h6>{{ post.tzone }}</h6>
+                                                <h5>Detalle:</h5>
                                                 <p>{{ post.content }}</p>
+                                                <h5>Comentario:</h5>
+                                                <p>{{ post.observations }}</p>
+                                                <form action="{% url 'new_status' post.id %}" method="POST" class="mb-4">
+                                                    {% csrf_token %}
+                                                    <div class="form-group">
+                                                        <label for="new_status">Comentario:</label>
+                                                        <input type="text" id="new_status" name="new_status" class="form-control" required>
+                                                    </div>
+                                                    <button class="btn btn-primary mt-2" type="submit">Guardar Cambios</button>
+                                                </form>
                                                 <div class="card-buttons">
-                                                    <form action="{% url 'cambiar_status' post.id %}" method='POST'>
+                                                    <form action="{% url 'cambiar_status' post.id %}" method='POST' class="mb-2">
                                                         {% csrf_token %}
                                                         <button class="btn btn-primary" type="submit">Completar</button>
                                                     </form>
-                                                    <a class="btn btn-success" href="{% url 'modificar_posteo' post.id %}">Modificar</a>
-                                                    <a class="btn btn-info" href="{% url 'home' %}">Retomar</a>
-                                                    <form action="{% url 'eliminar_posteo' post.id %}" method='POST'>
+                                                    <a class="btn btn-success mb-2" href="{% url 'modificar_posteo' post.id %}">Modificar</a>
+                                                    <a class="btn btn-info mb-2" href="{% url 'home' %}">Retomar</a>
+                                                    <form action="{% url 'eliminar_posteo' post.id %}" method='POST' class="mb-2">
                                                         {% csrf_token %}
                                                         <button class="btn btn-danger" type="submit">Eliminar</button>
                                                     </form>
-                                                    
                                                 </div>
                                             </div>
                                         </div>

@@ -20,6 +20,7 @@ class Post(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Author del Posteo')
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Fecha de Creacion del Post')
     tzone = models.CharField(choices=TZ, verbose_name='Estado', max_length=20, default='Pendiente')
+    observations = models.TextField(verbose_name='Observaciones', blank=True, null=True)
 
     def __str__(self):
         return self.title + ' - ' + str(self.created_at)

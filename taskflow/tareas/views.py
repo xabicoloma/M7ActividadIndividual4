@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse_lazy
 from django.http import HttpResponse
 from .models import Post
@@ -46,6 +46,14 @@ def cambiar_status(request, id):
     post = Post.objects.get(pk=id)
     if request.method == 'POST':
         post.tzone = 'Completada'
+        post.save()
+        return redirect('home')
+    
+def new_status(request, id):
+    post = Post.objects.get(pk=id)
+    if request.method == 'POST':
+        new_status = request.POST.get('new_status', '')
+        post.observations = new_status
         post.save()
         return redirect('home')
 
